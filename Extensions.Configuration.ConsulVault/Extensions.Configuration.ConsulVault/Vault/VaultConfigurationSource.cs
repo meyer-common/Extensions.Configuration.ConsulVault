@@ -9,12 +9,12 @@ namespace Meyer.Common.Extensions.Configuration.ConsulVault
         private readonly string token;
         private readonly bool isRequired;
 
-        public VaultConfigurationSource(string serviceName, string address, string token, bool isRequired)
+        public VaultConfigurationSource(string serviceName, string address, string token, bool optional)
         {
             this.serviceName = serviceName;
             this.address = address;
             this.token = token;
-            this.isRequired = isRequired;
+            this.isRequired = !optional;
         }
 
         public IConfigurationProvider Build(IConfigurationBuilder builder)

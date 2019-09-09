@@ -25,12 +25,11 @@ namespace Meyer.Common.Extensions.Configuration.ConsulVault
 
         public override void Load()
         {
-            if (this.isRequired)
+            if (string.IsNullOrWhiteSpace(this.serviceName) || string.IsNullOrWhiteSpace(this.address) || string.IsNullOrWhiteSpace(this.token))
             {
-                if (string.IsNullOrWhiteSpace(this.serviceName) || string.IsNullOrWhiteSpace(this.address) || string.IsNullOrWhiteSpace(this.token))
-                {
-                    throw new ArgumentException("Invalid vault connection info");
-                }
+                if (this.isRequired) throw new ArgumentException("Invalid vault connection info");
+
+                return;
             }
 
             this.LoadAsync().GetAwaiter().GetResult();
