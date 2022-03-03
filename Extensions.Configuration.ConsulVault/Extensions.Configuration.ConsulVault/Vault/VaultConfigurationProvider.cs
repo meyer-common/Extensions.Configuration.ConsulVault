@@ -53,14 +53,14 @@ public class VaultConfigurationProvider : ConfigurationProvider
         if (list.Data == null)
         {
             var result = await vaultClient.Secret.Read<Dictionary<string, string>>(key);
-            foreach (string item in result.Data.Keys.Where(x => !string.IsNullOrWhiteSpace(x)))
+            foreach (var item in result.Data.Keys.Where(x => !string.IsNullOrWhiteSpace(x)))
             {
                 Data.Add(Regex.Replace(key.Replace($"{serviceName}/", "").Replace('/', ':').Trim(':'), "\\[\\d\\]", new MatchEvaluator(RemoveBrackets)), result.Data[item]);
             }
         }
         else
         {
-            foreach (string item in list.Data.Keys.Where(x => !string.IsNullOrWhiteSpace(x)))
+            foreach (var item in list.Data.Keys.Where(x => !string.IsNullOrWhiteSpace(x)))
             {
                 await this.Recurse(vaultClient, $"{key}/{item}");
             }
