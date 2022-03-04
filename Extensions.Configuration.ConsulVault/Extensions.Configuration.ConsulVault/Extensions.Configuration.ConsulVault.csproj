@@ -4,6 +4,8 @@
     <Authors>Meyer</Authors>
     <Description>DotNet Core app setting configuration provider for Hashicorp Consul and Vault</Description>
     <Copyright>Copyright 2022</Copyright>
+    <ProjectUrl>https://github.com/meyer-common/Extensions.Configuration.ConsulVault</ProjectUrl>
+    <License type="expression">MIT</License>
     <TargetFrameworks>net6.0</TargetFrameworks>
     <Version>1.0.0.0</Version>
     <PackageVersion>1.0.0.0</PackageVersion>
